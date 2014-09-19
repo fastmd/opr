@@ -1,0 +1,2 @@
+module RiskizationsHelper
+end

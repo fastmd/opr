@@ -1,0 +1,13 @@
+
+
+<%= render layout: 'form' do |f| %>
+  <div class="field">
+    <%= f.label :"Стандарты которые необходимо соблюдать" %><br />
+    <%= f.text_area :lstand %>
+  </div>
+  <div class="field">
+    <%= f.label :" Реальное состояние труда (выявленные нарушения требования стандартов)" %><br />
+    <%= f.text_area :realst %>
+  </div>
+  
+<% end %>

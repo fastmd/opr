@@ -1,0 +1,28 @@
+<h1>Реестр рисков</h1>
+
+<%= link_to "Вввести новый фактор риска", new_risk_path %>
+
+<br>
+<table id="table1">
+	<thead>
+  <tr>
+  	<th>№ </th>
+    <th> Тип риска</th>
+    <th> Наименование риска</th>
+    <th> Последствия </th>   
+  </tr>
+ </thead>
+ 
+ <tbody>
+ <%i = 0%>
+  <% @risk.each do |rc| %>
+    <tr>
+    	<%i = i + 1%>
+      <td><%= i%></td>
+      <td><%= rc.rtype %></td>	
+      <td><%= rc.risk %></td>
+      <td><%= rc.result %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

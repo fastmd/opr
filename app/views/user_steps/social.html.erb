@@ -1,0 +1,16 @@
+<h1>I.Составление карточки профессиональных рисков</h1>
+
+<%= render layout: 'form' do |f| %>
+  <div class="field">
+    <%= f.label :"Должность / профессия" %><br />
+    <%= f.text_field :rabm %>
+  </div>
+  <div class="field">
+    <%= f.label :" 1.Описание рабочих действий и зоны выполнения работ" %><br />
+    <%= f.text_area :oprab %>
+  </div>
+  <div class="field">
+    <%= f.label :" 2.Лица подверженные риску" %><br />
+    <%= f.text_area :hlist %>
+  </div>
+<% end %>

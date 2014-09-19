@@ -1,0 +1,43 @@
+
+
+<%= render layout: 'form' do |f| %>
+  <h1>Реестр рисков</h1>
+
+
+
+<br>
+<table id="table1">
+	<thead>
+  <tr>
+  	<th>№ </th>
+    <th> Тип риска</th>
+    <th> Наименование риска</th>
+    <th> Последствия </th>
+    <th>  </th>   
+  </tr>
+ </thead>
+ 
+ <tbody>
+ <%i = 0%>
+ <%= hidden_field_tag "user[risk_ids][]", nil %>
+  <% Risk.all.each do |risk| %>
+    <tr>
+    	<%i = i + 1%>
+      <td><%= i%></td>
+      <td><%= risk.rtype %></td>	
+      <td><%= risk.risk %></td>
+      <td><%= risk.result %></td>
+      <td><%= check_box_tag "user[risk_ids][]", risk.id, @user.risk_ids.include?(risk.id), id: dom_id(risk) %> </td>
+      <%= label_tag dom_id(risk), risk.risk %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+  
+<% end %>
+
+
+
+
+
