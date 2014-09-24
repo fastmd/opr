@@ -17,7 +17,7 @@ class UserStepsController < ApplicationController
   def update_rzs
     Riskization.update(params[:riskization].keys, params[:riskization].values)
     flash[:notice] = 'Reports were successfully updated.'
-    redirect_to user_steps_path
+    render_wizard
  end 
   
 private
