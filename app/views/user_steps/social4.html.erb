@@ -1,74 +1,25 @@
 
 
-<%= render layout: 'form' do |f| %>
-  <h1>Реестр рисков</h1>
-
-
-<table id="table1">
-	<thead>
-  <tr>
-  	<th>№ </th>
-    <th> Тип риска</th>
-    <th> Наименование риска</th>
-    <th> Опасность </th>
-          
-  </tr>
- </thead>
- 
- <tbody>
- <%i = 0%>
-
- <!-- <% for riskization in @user.riskizations %>
-    <% fields_for "f[riskization_attributes][]", riskization do |riskization_form| %>
-      <p>
-      	<td>id: <%= riskization_form.text_field :id %></td>
-      	<td>RVER: <%= riskization_form.text_field :risk_id %></td>
-        <td>RVER: <%= riskization_form.text_field :rver %></td>
-        <td>RPOSL: <%= riskization_form.text_field :rposl %></td>
-      </p>
-    <% end %>
-  <% end %> -->
-  
-  
-
-
-  <ul>
-  <% for task in @incomplete_tasks %>
-    <li>
-      <%= check_box_tag "task_ids[]", task.id %>
-      <%= task.name %>
-    </li>
-  <% end %>
-  </ul>
-  <%= submit_tag "Mark as Complete" %>
-<% end %>
-
-
-<%= form_tag user_path(@user), :method => :put do %>
-	<%= for rc in @user.riskizations %>
-    
-    	<%i = i + 1%>
-    	<td><%= f.text_field :id %></td>
-    	<% @u = @user.risks.find(rc.risk_id) %>
-    	<td><%= @u.risk %></td>
-    
-    	<td><%i = i + 1%></td>
-    	<td><%= label_tag(:rc, rc.rposl) %></td>
-    	<td><%= select( :rc,rc.rver,['1','2','3','4','5'] )%></td>	
-    	<td><%= label_tag(:rc, rc.rver) %></td>
-   
-    	</tr>
-  
-	  <% end %>
-  <%= submit_tag "Mark as Complete" %>
-<% end %> 
-  </tbody>
-</table>
-
-
-
-
-  
+<%= form_for :riskizations, :url => {:action => 'update_rzs'} do %>
+	<table>
+		<tr>
+		<th>Current</th>
+		<th>Publication date</th>
+		<th>Name</th>
+		</tr>
+		<% i=0%>
+			<% @user.riskizations.each do |riskization| %>
+			<%= fields_for "riskization[]", riskization do |riskization_fields| %>
+			<tr>
+				<% i=i+1%>
+				<td><%= i %></td>
+				<td><%= riskization_fields.text_field :rver %></td>
+				<td><%= riskization_fields.text_field :rposl %></td>
+			</tr>
+			<% end %>
+			<% end %>
+	</table>
+	<%= submit_tag 'Update' %>
 <% end %>
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140911113830) do
+ActiveRecord::Schema.define(:version => 20140916072226) do
 
   create_table "riskizations", :force => true do |t|
     t.integer  "user_id"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(:version => 20140911113830) do
     t.string   "rtype"
     t.string   "risk"
     t.string   "result"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tphs", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
