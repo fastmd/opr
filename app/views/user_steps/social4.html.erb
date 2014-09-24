@@ -10,8 +10,9 @@
   	<th>№ </th>
     <th> Тип риска</th>
     <th> Наименование риска</th>
-    <th> Опасность </th>
-          
+    <th> Последствия </th>
+    <th> Вероятность  </th>
+    <th> Серьезность последствий </th>      
   </tr>
  </thead>
  
@@ -28,24 +29,9 @@
       </p>
     <% end %>
   <% end %> -->
-  
-  
-
-
-  <ul>
-  <% for task in @incomplete_tasks %>
-    <li>
-      <%= check_box_tag "task_ids[]", task.id %>
-      <%= task.name %>
-    </li>
-  <% end %>
-  </ul>
-  <%= submit_tag "Mark as Complete" %>
-<% end %>
-
 
 <%= form_tag user_path(@user), :method => :put do %>
-	<%= for rc in @user.riskizations %>
+	<% for rc in @user.riskizations %>
     
     	<%i = i + 1%>
     	<td><%= f.text_field :id %></td>
@@ -53,7 +39,7 @@
     	<td><%= @u.risk %></td>
     
     	<td><%i = i + 1%></td>
-    	<td><%= label_tag(:rc, rc.rposl) %></td>
+    	
     	<td><%= select( :rc,rc.rver,['1','2','3','4','5'] )%></td>	
     	<td><%= label_tag(:rc, rc.rver) %></td>
    
@@ -61,7 +47,7 @@
   
 	  <% end %>
   <%= submit_tag "Mark as Complete" %>
-<% end %> 
+<% end %>
   </tbody>
 </table>
 
