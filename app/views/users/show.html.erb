@@ -30,7 +30,7 @@
     	<% @u = @user.risks.find(rc.risk_id) %>
     	<td><%= @u.risk %></td>
     	<td><%= rc.rver %></td>
-		<td><%= rc.rposl %></td><br>
+		<td><%= rc.rposl %></td><>
     	</tr>
   
 	  <% end %>
@@ -39,4 +39,13 @@
    
 </p>
 
+<p>
+  <strong>Список стандартов:</strong>
+  <%= @user.lstand %>
+</p>
+
+<p>
+  <strong>Список лиц попадающих под воздействие:</strong>
+  <%= @user.hlist %>
+</p>
 
