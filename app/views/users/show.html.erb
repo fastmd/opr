@@ -33,10 +33,21 @@
 		<th>Последствия</th>
 		<th>Последствия</th>
 		</tr>
+		<%s = ""%>
     <% for rc in @user.riskizations %>
     	<% @u = @user.risks.find(rc.risk_id) %>
     	<td><%= @u.risk %></td>
-    	<td><%= rc.rver.to_i + rc.rposl.to_i %></td>
+    	<% 
+    		if ((rc.rver.to_i + rc.rposl.to_i)<7)
+    		    s =	"неопасно" 
+    		end 	
+    		if ((rc.rver.to_i + rc.rposl.to_i)>7)
+    		 	s = "опасно" 
+    	    end 		
+    	 %>
+    	 <td>
+    	 	<%= s %>
+    	</td>
     	</tr>
 	  <% end %>
  	</table>
