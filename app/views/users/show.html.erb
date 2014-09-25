@@ -1,0 +1,56 @@
+<td><%= link_to 'Back', users_path %></td>
+
+
+<p>
+  <strong>ФИО:</strong>
+  <%= @user.name %>
+</p>
+ 
+ <p>
+  <strong>Рабочее место:</strong>
+  <%= @user.rabm%>
+</p>
+ 
+<p>
+  <strong>Описание рабочих действий:</strong>
+  <%= @user.oprab %>
+</p>
+
+
+
+<p>
+  <strong>Реальное состояние дел:</strong>
+  <%= @user.realst %>
+</p>
+
+<p>
+  <strong>Список факторов риска:</strong>
+  <p>
+  	<table>
+		<tr>
+		<th>Наименование риска</th>
+		<th>Вероятность</th>
+		<th>Последствия</th>
+		<th>Последствия</th>
+		</tr>
+    <% for rc in @user.riskizations %>
+    	<% @u = @user.risks.find(rc.risk_id) %>
+    	<td><%= @u.risk %></td>
+    	<td><%= rc.rver.to_i + rc.rposl.to_i %></td>
+    	</tr>
+	  <% end %>
+ 	</table>
+  </p>   
+</p>
+
+
+<p>
+  <strong>Список стандартов:</strong>
+  <%= @user.lstand %>
+</p>
+
+<p>
+  <strong>Список лиц попадающих под воздействие:</strong>
+  <%= @user.hlist %>
+</p>
+
