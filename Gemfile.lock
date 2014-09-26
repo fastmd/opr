@@ -102,6 +102,8 @@ GEM
       json (>= 1.8.0)
     wicked (1.0.3)
       rails (>= 3.0.7)
+    zurb-foundation (4.3.2)
+      sass (>= 3.2.0)
 
 PLATFORMS
   ruby
@@ -116,3 +118,4 @@ DEPENDENCIES
   sqlite3
   uglifier (>= 1.0.3)
   wicked
+  zurb-foundation

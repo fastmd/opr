@@ -1,4 +1,7 @@
-<td><%= link_to 'Back', users_path %></td>
+<div class="row">
+ 
+
+
 
 <p>
   <strong>Дата : </strong>
@@ -12,11 +15,23 @@
 	<center>
 	 	(при проведении .............. работ)
 	</center>
+<br>
 
-	<div style="border: thin solid black">
-			<br>
-	</div>
-	
+<div class="row">
+  <div class="small-6 large-centered columns">
+        <table border="1">
+		<tr>
+		<th><strong>Описание рабочих действий и зоны выполнения работ:</strong></th>
+		<th><strong>Список лиц попадающих под воздействие:</strong></th>
+		</tr>
+         <td> 	<%= @user.oprab %>	</td>
+         <td> 	<%= @user.hlist %>	</td>		
+         </table>
+  </div>
+ </div>
+
+
+<br>	
   <strong>ФИО:</strong>
   <%= @user.name %>
 </p>
@@ -83,7 +98,7 @@
 </p>
 
 <p>
-  <strong>Список лиц попадающих под воздействие:</strong>
-  <%= @user.hlist %>
+  
 </p>
 
+</div>
