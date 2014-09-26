@@ -13,9 +13,11 @@
 			<tr>
 				<% i=i+1%>
 				<td><%= i %></td>
+
 				<% @u = @user.risks.find(riskization.risk_id) %>
     			<td><%= @u.risk %></td>
 				<td><%= i %></td>
+
 				<td><%= riskization_fields.text_field :rver %></td>
 				<td><%= riskization_fields.text_field :rposl %></td>
 				<% riskization %>
