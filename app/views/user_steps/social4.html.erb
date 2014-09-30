@@ -5,9 +5,9 @@
 <%= form_for :riskizations, :url => {:action => 'update_rzs'} do %>
 	<table>
 		<tr>
-		<th>Current</th>
-		<th>Publication date</th>
-		<th>Name</th>
+		<th>№</th>
+		<th>Наименование риска</th>
+		<th>Мероприятия по устранению</th>
 		</tr>
 		<% i=0%>
 			<% @user.riskizations.each do |riskization| %>
@@ -18,8 +18,6 @@
 
 				<% @u = @user.risks.find(riskization.risk_id) %>
     			<td><%= @u.risk %></td>
-				<td><%= i %></td>
-
 				<td><%= riskization_fields.text_area :mpred %></td>
 				<% session[:st] = 2 %>
 			</tr>
