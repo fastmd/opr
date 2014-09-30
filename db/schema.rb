@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140916072226) do
+ActiveRecord::Schema.define(:version => 20140930052236) do
 
   create_table "riskizations", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20140916072226) do
     t.string   "rver"
     t.string   "rposl"
     t.string   "danger"
+    t.string   "mpred"
   end
 
   create_table "risks", :force => true do |t|

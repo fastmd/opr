@@ -18,14 +18,14 @@
     			<td><%= @u.risk %></td>
 				<td><%= i %></td>
 
-				<td><%= riskization_fields.text_field :rver %></td>
-				<td><%= riskization_fields.text_field :rposl %></td>
-				<% riskization %>
+				<td><%= riskization_fields.text_area :mpred %></td>
+				<% session[:st] = 2 %>
 			</tr>
 			<% end %>
 			<% end %>
 	</table>
 	<%= submit_tag 'Update' %>
+	<%= link_to "skip this step", next_wizard_path %>
 <% end %>
 
 

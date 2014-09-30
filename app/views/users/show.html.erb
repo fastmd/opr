@@ -8,61 +8,54 @@
   <%=  Date.today %>
 </p>
  
-	<center>Карточка</center><br>
+	<center><h3>Карточка</h3></center>
 	<center>
 	 	по оценке профессиональных рисков
 	</center>
 	<center>
 	 	(при проведении .............. работ)
 	</center>
-<br>
+	<br><br>
+	  <p>
+        <strong>Описание рабочих действий и зоны выполнения работ:</strong><br>
+        <%= @user.oprab %><br>
+      </p> 
+		<p><strong>Лица подвергающиеся риску:</strong><br>
+				
+         	<%= @user.hlist %><br>
+         </p>				
+  	<p>
+  <strong>Список соблюдаемых стандартов</strong><br>
+  <%= @user.lstand %>
+	</p>
+	<br>
 
-<div class="row">
-  <div class="small-6 large-centered columns">
-        <table border="1">
-		<tr>
-		<th><strong>Описание рабочих действий и зоны выполнения работ:</strong></th>
-		<th><strong>Список лиц попадающих под воздействие:</strong></th>
-		</tr>
-         <td> 	<%= @user.oprab %>	</td>
-         <td> 	<%= @user.hlist %>	</td>		
-         </table>
-  </div>
- </div>
-
-
-<br>	
-  <strong>ФИО:</strong>
-  <%= @user.name %>
-</p>
- 
  <p>
   <strong>Рабочее место:</strong>
   <%= @user.rabm%>
 </p>
- 
-<p>
-  <strong>Описание рабочих действий:</strong>
-  <%= @user.oprab %>
-</p>
-
-
 
 <p>
-  <strong>Реальное состояние дел:</strong>
+  <strong>Реальное состояние условий труда (выявленные нарушения требований стандартов)</strong><br>
   <%= @user.realst %>
 </p>
-
+ 
 <p>
   <strong>Список факторов риска:</strong>
   <p>
   	<table border="1">
 		<tr>
 		<th>Наименование риска</th>
-		<th>Степень риска</th>
-		
+		<th>Вероятность риска</th>
+		<th>Последствия риска</th>
+		<th>Уровень риска</th>
+		<th>Меры предупреждения для уменьшения / устрашения выявленных рисков </th>
 		</tr>
 		<%s = ""%>
+		<%s1 = ""%>
+		<%s2 = ""%>
+		<%s3 = ""%>
+		
     <% for rc in @user.riskizations %>
     	<% @u = @user.risks.find(rc.risk_id) %>
     	<td><%= @u.risk %></td>
@@ -82,9 +75,42 @@
     				s = "Недопустимый риск"
 			end	
     	 %>
-    	 <td>
-    	 	<%= s %>
-    	</td>
+    	 <% 
+    	  ind1 = rc.rver.to_i 
+    		    
+    	    case ind1
+				when 1
+    				s1 = "Маловероятно"
+				when 2
+    				s1 = "Очень редко"
+				when 3
+    				s1 = "Редко"
+				when 4
+    				s1 = "Вероятно"
+				else
+    				s1 = "Очень вероятно"
+			end	
+    	 %>
+    	 <% 
+    	  ind2 = rc.rposl.to_i 
+    		    
+    	    case ind2
+				when 1
+    				s2 = "Легкие"
+				when 2
+    				s2 = "Умеренные"
+				when 3
+    				s2 = "Серьезные"
+				when 4
+    				s2 = "Очень серьезные"
+				else
+    				s2 = "Смертельно"
+			end	
+    	 %>
+    	 <td><%= s %></td>
+    	 <td><%= s1 %></td>
+    	 <td><%= s2 %></td>
+    	 <td><%= rc.mpred %></td>
     	</tr>
 	  <% end %>
  	</table>
@@ -92,10 +118,7 @@
 </p>
 
 
-<p>
-  <strong>Список стандартов:</strong>
-  <%= @user.lstand %>
-</p>
+
 
 <p>
   

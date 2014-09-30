@@ -17,7 +17,12 @@ class UserStepsController < ApplicationController
   def update_rzs
     Riskization.update(params[:riskization].keys, params[:riskization].values)
     flash[:notice] = 'Reports were successfully updated.'
-    render_wizard
+    if (session[:st] == 1)
+      redirect_to_next(:social4)
+    end
+    if (session[:st] == 2)
+      redirect_to_finish_wizard
+    end  
  end 
   
 private

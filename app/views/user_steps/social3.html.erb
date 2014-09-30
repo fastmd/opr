@@ -1,62 +1,32 @@
+<%= form_for :riskizations, :url => {:action => 'update_rzs'} do %>
+	<table>
+		<tr>
+		<th>Current</th>
+		<th>Publication date</th>
+		<th>Name</th>
+		</tr>
+		<% i=0%>
+			<% @user.riskizations.each do |riskization| %>
+			<%= fields_for "riskization[]", riskization do |riskization_fields| %>
+			<tr>
+				<% i=i+1%>
+				<td><%= i %></td>
 
+				<% @u = @user.risks.find(riskization.risk_id) %>
+    			<td><%= @u.risk %></td>
+				<td><%= i %></td>
 
-<%= render layout: 'form' do |f| %>
-  <h1>Реестр рисков</h1>
-
-
-<table id="table1">
-	<thead>
-  <tr>
-  	<th>№ </th>
-    <th> Тип риска</th>
-    <th> Наименование риска</th>
-    <th> Последствия </th>
-    <th> Вероятность  </th>
-    <th> Серьезность последствий </th>      
-  </tr>
- </thead>
- 
- <tbody>
- <%i = 0%>
-
- <!-- <% for riskization in @user.riskizations %>
-    <% fields_for "f[riskization_attributes][]", riskization do |riskization_form| %>
-      <p>
-      	<td>id: <%= riskization_form.text_field :id %></td>
-      	<td>RVER: <%= riskization_form.text_field :risk_id %></td>
-        <td>RVER: <%= riskization_form.text_field :rver %></td>
-        <td>RPOSL: <%= riskization_form.text_field :rposl %></td>
-      </p>
-    <% end %>
-  <% end %> -->
-
-<%= form_tag user_path(@user), :method => :put do %>
-	<% for rc in @user.riskizations %>
-    
-    	<%i = i + 1%>
-    	<td><%= f.text_field :id %></td>
-    	<% @u = @user.risks.find(rc.risk_id) %>
-    	<td><%= @u.risk %></td>
-    
-    	<td><%i = i + 1%></td>
-    	
-    	<td><%= select( :rc,rc.rver,['1','2','3','4','5'] )%></td>	
-    	<td><%= label_tag(:rc, rc.rver) %></td>
-   
-    	</tr>
-  
-	  <% end %>
-  <%= submit_tag "Mark as Complete" %>
+				<td><%= riskization_fields.text_field :rver %></td>
+				<td><%= riskization_fields.text_field :rposl %></td>
+				<% session[:st] = 1 %> 
+				
+			</tr>
+			<% end %>
+			<% end %>
+	</table>
+	<%= submit_tag 'Update' %>
+	<%= link_to "skip this step", next_wizard_path %>
 <% end %>
-  </tbody>
-</table>
-
-
-
-
-  
-<% end %>
-
 
 
 
