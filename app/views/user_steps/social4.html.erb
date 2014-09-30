@@ -1,4 +1,6 @@
+<div class="panel callout radius">
 
+<h1>Мероприятия по предотвращению рисков</h1>
 
 <%= form_for :riskizations, :url => {:action => 'update_rzs'} do %>
 	<table>
@@ -24,9 +26,11 @@
 			<% end %>
 			<% end %>
 	</table>
-	<%= submit_tag 'Update' %>
-	<%= link_to "skip this step", next_wizard_path %>
+	<%= submit_tag 'Finish' %>
+	
 <% end %>
+
+</div>
 
 
 

@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.min
 //= require foundation
+//= require foundation-datetimepicker
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

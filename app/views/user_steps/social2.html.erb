@@ -1,3 +1,4 @@
+<div class="panel callout radius">
 
 
 <%= render layout: 'form' do |f| %>
@@ -28,7 +29,7 @@
       <td><%= risk.risk %></td>
       <td><%= risk.result %></td>
       <td><%= check_box_tag "user[risk_ids][]", risk.id, @user.risk_ids.include?(risk.id), id: dom_id(risk) %> </td>
-      <%= label_tag dom_id(risk), risk.risk %>
+      <% label_tag dom_id(risk), risk.risk %>
     </tr>
   <% end %>
   </tbody>
@@ -39,5 +40,5 @@
 
 
 
-
+</div>
 

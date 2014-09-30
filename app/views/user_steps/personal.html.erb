@@ -1,16 +1,31 @@
+
+<script>
+	  
+		$.ajax({
+    success:function(){
+        //your stuff
+       $("#modelname").datepicker({ dateFormat: "dd.mm.yy" });
+     }
+ });
+  
+			
+</script>
+
+<div class="panel callout radius">
 <h1>Введите свои личные данные.</h1>
 
 <%= render layout: 'form' do |f| %>
-  <div class="field">
+  
     <%= f.label :"ФИО" %><br/>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
+  
     <%= f.label :"Дата рождения" %><br />
-    <%= f.date_select :date_of_birth, start_year: 1900, end_year: Date.today.year, include_blank: true %>
-  </div>
-  <div class="field">
+    
+    <%= f.text_field :date_of_birth,:value => Time.now.strftime('%d.%m.%Y'),:id => "modelname" %>
+    
     <%= f.label :"Электронная почта" %><br />
     <%= f.text_area :email, rows: 5 %>
-  </div>
+  
 <% end %>
+
+</div>

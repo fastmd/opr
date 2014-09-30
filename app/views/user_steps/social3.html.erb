@@ -1,3 +1,6 @@
+<div class="panel callout radius">
+
+<h1>Оценка вероятности и последствий рисков</h1>
 <%= form_for :riskizations, :url => {:action => 'update_rzs'} do %>
 	<table>
 		<tr>
@@ -24,10 +27,10 @@
 			<% end %>
 			<% end %>
 	</table>
-	<%= submit_tag 'Update' %>
+	<%= submit_tag 'Continue' %>
 	<%= link_to "skip this step", next_wizard_path %>
 <% end %>
 
-
+</div>
 
 
